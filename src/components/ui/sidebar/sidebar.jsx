@@ -3,6 +3,8 @@ import { Home, Users } from 'lucide-react';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Separator } from '@/components/ui/separator';
+import { isOctiot } from '@/utils/browser';
+import { images } from '@/constants/images';
 
 export default function Sidebar() {
   const location = useLocation();
@@ -39,9 +41,9 @@ export default function Sidebar() {
       <div className='space-y-4 h-full flex flex-col py-2'>
         <div className='px-3 py-2 flex-1'>
           <Link to='/app' className='cursor-pointer'>
-            <div className='w-32 h-auto mb-6'>
+            <div className='w-32 h-auto mb-6 flex'>
               <img
-                src='/aliste-logo.png'
+                src={isOctiot?images.octiotLogo:'/aliste-logo.png'}
                 style={{ width: '100%', height: 'auto' }}
               />
             </div>
@@ -69,7 +71,8 @@ export default function Sidebar() {
             ))}
           </div>
         </div>
-        <div className='text-center flex flex-col items-center space-y-1'>
+        {
+          !isOctiot && <div className='text-center flex flex-col items-center space-y-1'>
           <Link to='https://alistetechnologies.com' className=''>
             <div className='w-32 h-auto'>
               <img
@@ -83,6 +86,8 @@ export default function Sidebar() {
             Designed and developed by Aliste
           </p>
         </div>
+        }
+        
       </div>
     </div>
   );

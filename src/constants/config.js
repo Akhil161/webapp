@@ -1,3 +1,5 @@
+let test = false;
+
 export const serverUrl = {
   user: 'https://services.user.aliste.io',
   sub: 'https://subscriptioncloud.alistetechnologies.com',
@@ -7,6 +9,7 @@ export const serverUrl = {
   deviceHandler:
     'https://v3kglrcssj.execute-api.ap-south-1.amazonaws.com/default',
 };
+export const octiotUrl = test?"http://localhost:3001":"https://luxe.octiotenergy.com" 
 
 export const DeviceTypeMap = {
   FAN: 0,

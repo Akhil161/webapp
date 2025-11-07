@@ -1,22 +1,26 @@
 // import { useAuth } from '@/features/auth/api/auth-store';
 // import { createOtp } from '@/features/auth/api/create-otp';
+import { images } from '@/constants/images';
 import LoginForm from '@/features/auth/component/login-form';
 import { OtpInput } from '@/features/auth/component/otp-input';
+import { faviconUpdate, isOctiot } from '@/utils/browser';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function LoginRoute() {
   const [otpSent, setOtpSent] = useState(false);
 
   console.log('[otpSent]', otpSent);
-
+  useEffect(()=>{
+    faviconUpdate()
+  },[])
   return (
     <div className='flex flex-col md:flex-row h-full'>
       <div className='w-full p-5 flex flex-col bg-sky-800/20 flex-1 items-center ustify-center'>
         {/* <div className=''> */}
         <div className='w-36 mb-14 self-start'>
           <img
-            src='/aliste-logo.png'
+            src={isOctiot?images.octiotLogo:'/aliste-logo.png'}
             style={{ height: 'auto', width: '100%' }}
           />
         </div>
@@ -25,7 +29,7 @@ export function LoginRoute() {
           <div className='h-auto max-w-[500px] flex- '>
             <img
               src='/login-screen.png'
-              alt='Welcome to Aliste Technologies'
+              alt={isOctiot?"Welcome to Octiot":'Welcome to Aliste Technologies'}
               style={{ width: '100%', height: 'auto' }}
             />
           </div>
@@ -39,7 +43,7 @@ export function LoginRoute() {
       <div className='flex flex-col items-center justify-center space-y-6 text-center p-5 h-full flex-1'>
         <div className='mb-6'>
           <h2 className='text-2xl md:text-3xl font-medium'>
-            Welcome to Aliste Technologies
+            {isOctiot?"Welcome to Octiot":'Welcome to Aliste Technologies'}
           </h2>
           <p className='text-muted-foreground text-md'>
             To get started, please enter your mobile number
